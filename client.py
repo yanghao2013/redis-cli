@@ -60,9 +60,7 @@ class Client():
     def extract_result(self,result):
         if result:
             res = result.split('\r\n')
-            if res[0].startswith('+'):
-                return True if res[0][1:] == 'OK' else res[0][1:]
-            elif res[0].startswith(':'):
+            if res[0].startswith('+') or res[0].startswith(':'):
                 return res[0][1:]
             elif res[0].startswith('$'):
                 return ''.join(res[1:])
